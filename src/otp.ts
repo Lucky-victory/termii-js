@@ -8,7 +8,7 @@ export class TermiiOTP extends TermiiHttpClient{
    constructor(){
       super()
    }
- async  sendSms(options,callback?:ResponseCallback){
+ async  sendSms<T>(options:any,callback?:ResponseCallback<T>){
          this.apiPath=ApiPaths.smsOtpSend;
          const api_key = this.apiKey;
          this.data = Utils.mergeObj({ api_key }, options);
@@ -18,14 +18,14 @@ export class TermiiOTP extends TermiiHttpClient{
             if (!Utils.isUndefined(response)) {
                return Promise.resolve(response);
             }
-         } catch (error) {
+         } catch (error:any) {
             if (Utils.isFunction(callback)) {
                return (callback as ResponseCallback < T > )(null, error);
             }
             return Promise.reject(error);
          }
    }
-  async sendEmail(options,callback?:ResponseCallback){
+  async sendEmail<T>(options:any,callback?:ResponseCallback<T>){
         this.apiPath=ApiPaths.emailOtpSend;
         const api_key = this.apiKey;
         this.data = Utils.mergeObj({ api_key }, options);
@@ -35,17 +35,17 @@ export class TermiiOTP extends TermiiHttpClient{
            if (!Utils.isUndefined(response)) {
               return Promise.resolve(response);
            }
-        } catch (error) {
+        } catch (error:any) {
            if (Utils.isFunction(callback)) {
               return (callback as ResponseCallback < T > )(null, error);
            }
            return Promise.reject(error);
         }
    }
-  async voiceCall(options,callback?:ResponseCallback){
+  async voiceCall<T>(options:any,callback?:ResponseCallback<T>){
          this.apiPath=ApiPaths.voiceOtpCall
    }
-   async voiceSend(options,callback?:ResponseCallback){
+   async voiceSend<T>(options:any,callback?:ResponseCallback<T>){
       this.apiPath=ApiPaths.voiceOtpSend;
       const api_key = this.apiKey;
       this.data = Utils.mergeObj({ api_key }, options);
@@ -55,14 +55,14 @@ export class TermiiOTP extends TermiiHttpClient{
          if (!Utils.isUndefined(response)) {
             return Promise.resolve(response);
          }
-      } catch (error) {
+      } catch (error:any) {
          if (Utils.isFunction(callback)) {
             return (callback as ResponseCallback < T > )(null, error);
          }
          return Promise.reject(error);
       }
    }
-  async verify(options,callback?:ResponseCallback){
+  async verify<T>(options:any,callback?:ResponseCallback<T>){
      this.apiPath=ApiPaths.otpVerify; 
      const api_key = this.apiKey;
      this.data = Utils.mergeObj({ api_key }, options);
@@ -72,14 +72,14 @@ export class TermiiOTP extends TermiiHttpClient{
         if (!Utils.isUndefined(response)) {
            return Promise.resolve(response);
         }
-     } catch (error) {
+     } catch (error:any) {
         if (Utils.isFunction(callback)) {
            return (callback as ResponseCallback < T > )(null, error);
         }
         return Promise.reject(error);
      }
    }
-  async generate(options,callback?:ResponseCallback){
+  async generate<T>(options:any,callback?:ResponseCallback<T>){
      this.apiPath=ApiPaths.smsOtpGenerate;
    const api_key = this.apiKey;
    this.data = Utils.mergeObj({ api_key },options);
@@ -89,7 +89,7 @@ export class TermiiOTP extends TermiiHttpClient{
       if (!Utils.isUndefined(response)) {
          return Promise.resolve(response);
       }
-   } catch (error) {
+   } catch (error:any) {
       if (Utils.isFunction(callback)) {
          return (callback as ResponseCallback < T > )(null, error);
       }

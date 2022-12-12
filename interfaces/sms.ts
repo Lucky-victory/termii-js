@@ -40,7 +40,7 @@ export interface ITermiiSMSResponse{
       balance: number;
       user: string;
    }
-   export interface ITermiiBulkSMSResponse extends TermiiSMSResponse{
+   export interface ITermiiBulkSMSResponse extends ITermiiSMSResponse{
       code:string
    }
    

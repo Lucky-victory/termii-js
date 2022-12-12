@@ -1,7 +1,7 @@
 import axios from "axios";
 import {TermiiOTP} from './otp'
 import {TermiiSMS} from './sms'
-import {ResponseCallback} from '../interfaces/sms';
+import {ResponseCallback, TermiiHttpError,IResponse} from '../interfaces';
 import {Utils} from '../helpers/index';
 import {Auth} from './auth';
 
@@ -14,7 +14,7 @@ export class TermiiHttpClient {
    constructor(){
 this.apiKey=Auth.config?.apiKey;
    }
-private $requestHandler(reqBody,callback:ResponseCallback){
+private $requestHandler<T>(reqBody:any,callback:(data:T|null,err:TermiiHttpError|null)=>void){
    
 const errorObj: TermiiHttpError = {
    message: "an error occurred",
@@ -82,8 +82,7 @@ axios({
                );
             }
 
-            return 
-               callback ({
+            return  callback ({
                   success: true,
                   data: result as T,
                   error: null,
