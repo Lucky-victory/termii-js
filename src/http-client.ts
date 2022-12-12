@@ -9,7 +9,7 @@ export class TermiiHttpClient {
    protected apiKey!:string;
    private baseUrl = 'https://api.ng.termii.com/api';
    protected apiPath='';
-protected apiUrl=`${this.baseUrl}/${this.apiPath}`;
+
 
    constructor(){
 this.apiKey=Auth.config?.apiKey;
@@ -20,7 +20,7 @@ const errorObj: TermiiHttpError = {
    message: "an error occurred",
    data: undefined,
 };
-const host=this.apiUrl;
+const host=`${this.baseUrl}/${this.apiPath}`;
 
 axios({
       url: host,
