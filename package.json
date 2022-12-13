@@ -1,5 +1,5 @@
 {
-  "name": "termii-node",
+  "name": "termii-simple",
   "version": "0.0.1-beta",
   "description": "A Javascript SDK for Termii SMS &amp; OTP (SMS, Email and Voice)",
   "main": "./dist/index.js",
