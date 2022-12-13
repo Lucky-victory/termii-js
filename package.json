@@ -1,6 +1,6 @@
 {
   "name": "termii-js",
-  "version": "1.0.0",
+  "version": "0.0.1-beta",
   "description": "A Javascript SDK for Termii SMS &amp; OTP (SMS, Email and Voice)",
   "main": "./dist/index.js",
   "scripts": {

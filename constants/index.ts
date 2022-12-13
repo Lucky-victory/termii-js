@@ -10,3 +10,9 @@ export const ApiPaths={
    voiceOtpCall:'sms/otp/call',
    otpVerify:'sms/otp/verify',
 }
+
+export const defaultOTPOptions={
+   pin_attempts:2,
+   pin_time_to_live:5,
+   pin_length:6,
+}
