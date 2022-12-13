@@ -112,7 +112,7 @@ export type TermiiVoiceCallOptions={
 }
 
 export type TermiiEmailOTPOptions={
-   api_key:string;
+   api_key?:string;
    /**
     * Represents the email address you are sending to (Example: `test@termii.com`).
     * */
