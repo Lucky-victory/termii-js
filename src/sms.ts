@@ -10,8 +10,9 @@ export class TermiiSMS extends TermiiHttpClient{
    constructor(){
       super()
    }
-   
- async  send<T=ITermiiSMSResponse>(options:TermiiSMSOptions,callback?:ResponseCallback<T>){
+   async  send<T=ITermiiSMSResponse>(options:TermiiSMSOptions):Promise< IResponse<T>>
+   async  send<T=ITermiiSMSResponse>(options:TermiiSMSOptions,callback:ResponseCallback<T>):Promise<void>
+ async  send<T=ITermiiSMSResponse>(options:TermiiSMSOptions,callback?:ResponseCallback<T>):Promise<void | IResponse<T>>{
       this.apiPath=ApiPaths.smsSend;
    const api_key = this.apiKey;
    this.data = Utils.mergeObj( { api_key,type:"plain" },options);
@@ -29,7 +30,9 @@ export class TermiiSMS extends TermiiHttpClient{
    }
    
    }
-  async sendBulk<T=ITermiiBulkSMSResponse>(options:TermiiSMSOptions,callback?:ResponseCallback<T>){
+   async sendBulk<T=ITermiiBulkSMSResponse>(options:TermiiSMSOptions):Promise<IResponse<T>>
+   async sendBulk<T=ITermiiBulkSMSResponse>(options:TermiiSMSOptions,callback:ResponseCallback<T>):Promise<void>
+  async sendBulk<T=ITermiiBulkSMSResponse>(options:TermiiSMSOptions,callback?:ResponseCallback<T>):Promise<void|IResponse<T>>{
      this.apiPath=ApiPaths.smsBulkSend;
      const api_key=this.apiKey;
      this.data= Utils.mergeObj({api_key,type:"plain"},options);
