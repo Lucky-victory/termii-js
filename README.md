@@ -1,10 +1,11 @@
-# termii-js
+# termii-node
 A Javascript SDK for Termii SMS &amp; OTP(Email,SMS,WhatsApp).
 
-## Why `termii-js`?
+## Why `termii-node`?
 [Termii](https://termii.com) requires `api_key` to be included in each data when making a request,and each request is made to a different endpoint.
 
-but with **termii-js**,you don't have to worry about the endpoints, also you will only need to specify your `api_key` once, and `termii-js` will handle the rest.
+but with **termii-node**,you don't have to worry about the endpoints, also you will only need to specify your `api_key` once, and `termii-node` will handle the rest.
+Each method supports both promises and callbacks
 
 ## Installation
 
@@ -26,19 +27,23 @@ const client=new TermiiClient({
 });
 // for SMS
 const smsClient=new client.TermiiSMS();
-smsClient.send({
+
+const result= await smsClient.send({
    to:"234701234567",
    from:"Sender ID",
    sms:"Hi, this is a test SMS",
    channel:"generic",
    type:"plain"
 })
-
+console.log(result.data)
 // for OTP
 const otpClient=new client.TermiiOTP();
+
 otpClient.generate({
    pin_type:"NUMERIC",
    phone_number:"2347012345678"
+},(result,error)=>{
+   console.log(result);
 })
 ```
 
