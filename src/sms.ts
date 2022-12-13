@@ -14,7 +14,7 @@ export class TermiiSMS extends TermiiHttpClient{
  async  send<T=ITermiiSMSResponse>(options:TermiiSMSOptions,callback?:ResponseCallback<T>){
       this.apiPath=ApiPaths.smsSend;
    const api_key = this.apiKey;
-   this.data = Utils.mergeObj(options, { api_key });
+   this.data = Utils.mergeObj( { api_key,type:"plain" },options);
    try {
       const response = await this.promiseOrCallback <T> (this.data, callback);
    
@@ -32,7 +32,7 @@ export class TermiiSMS extends TermiiHttpClient{
   async sendBulk<T=ITermiiBulkSMSResponse>(options:TermiiSMSOptions,callback?:ResponseCallback<T>){
      this.apiPath=ApiPaths.smsBulkSend;
      const api_key=this.apiKey;
-     this.data= Utils.mergeObj(options,{api_key});
+     this.data= Utils.mergeObj({api_key,type:"plain"},options);
      try {
     const response= await this.promiseOrCallback<T>(this.data,callback);
     
